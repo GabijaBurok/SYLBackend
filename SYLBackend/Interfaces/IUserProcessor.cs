@@ -7,7 +7,7 @@ using SYLBackend.Models;
 
 namespace SYLBackend.Interfaces
 {
-    interface IUserProcessor
+    public interface IUserProcessor
     {
         Task<bool> AddNewUser(NewUserDTO data);
         Task<bool> ModifyUser(ModifyUserDTO data);

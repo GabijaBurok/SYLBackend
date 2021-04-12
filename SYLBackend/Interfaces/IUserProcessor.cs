@@ -11,9 +11,9 @@ namespace SYLBackend.Interfaces
     {
         Task<bool> AddNewUser(NewUserDTO data);
         Task<bool> ModifyUser(ModifyUserDTO data);
-        Task<bool> DeleteUser(UserIdDTO data);
+        Task<bool> DeleteUser(string userId);
         Task<bool> VerifyUser(UserLoginDTO data);
-        Task<Users> GetUserById(UserIdDTO data);
+        Task<Users> GetUserById(string userId);
         Task<Users> GetUserByEmail(string userEmail);
     }
 }

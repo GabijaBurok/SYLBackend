@@ -15,7 +15,7 @@ namespace SYLBackend.Processors
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteUser(UserIdDTO data)
+        public Task<bool> DeleteUser(string userId)
         {
             throw new NotImplementedException();
         }
@@ -25,7 +25,7 @@ namespace SYLBackend.Processors
             throw new NotImplementedException();
         }
 
-        public Task<Users> GetUserById(UserIdDTO data)
+        public Task<Users> GetUserById(string userId)
         {
             throw new NotImplementedException();
         }

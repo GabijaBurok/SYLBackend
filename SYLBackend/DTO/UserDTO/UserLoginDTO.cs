@@ -7,5 +7,7 @@ namespace SYLBackend.DTO.UserDTO
 {
     public class UserLoginDTO
     {
+        public string userEmail { get; set; }
+        public string userPassword { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace SYLBackend.Processors
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteProduct(string data)
+        public Task<bool> DeleteProduct(ProductIdDTO data)
         {
             throw new NotImplementedException();
         }
@@ -25,7 +25,7 @@ namespace SYLBackend.Processors
             throw new NotImplementedException();
         }
 
-        public Task<Products> GetProductByQuery(string data)
+        public Task<Products> GetProductByQuery(GetProductsByQuerryDTO data)
         {
             throw new NotImplementedException();
         }

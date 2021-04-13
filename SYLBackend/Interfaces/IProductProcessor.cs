@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace SYLBackend.Interfaces
 {
-    interface IProductProcessor
+    public interface IProductProcessor
     {
         Task<bool> AddNewProduct(NewProductDTO data);
         Task<bool> ModifyProduct(ModifyProductDTO data);
-        Task<bool> DeleteProduct(ProductIdDTO data);
+        Task<bool> DeleteProduct(string data);
         Task<Products> GetAllProducts();
-        Task<Products> GetProductByQuery(GetProductsByQuerryDTO data);
+        Task<Products> GetProductByQuery(string data);
     }
 }

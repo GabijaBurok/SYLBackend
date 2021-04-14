@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace SYLBackend.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class ProductController
     {
-        [Route("api/[controller]")]
-        [ApiController]
-        public class UserController : ControllerBase
-        {
+        
+       
             private readonly IProductProcessor _productProcessor;
 
-            public UserController(IProductProcessor productProcessor)
+            public ProductController(IProductProcessor productProcessor)
             {
                 _productProcessor = productProcessor;
             }
@@ -51,5 +51,5 @@ namespace SYLBackend.Controllers
                 throw new NotImplementedException();
             }
         }
-    }
+    
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SYLBackend.Interfaces
 {
-    interface IOrderProcessor
+    public interface IOrderProcessor
     {
         Task<bool> AddNewOrder(NewOrderDTO data);
         Task<bool> DeleteOrder(string orderId);

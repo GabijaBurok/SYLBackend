@@ -7,5 +7,10 @@ namespace SYLBackend.DTO.ShopDTO
 {
     public class ShopIdDTO
     {
+        public string shopId { get; set; }
+        public string sellerId { get; set; }
+        public string shopName { get; set; }
+        public string shopAddress { get; set; }
+        public Base64FormattingOptions shopPicture { get; set; }
     }
 }

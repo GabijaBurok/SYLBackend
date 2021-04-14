@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SYLBackend.Interfaces
 {
-    interface IShopProcessor
+    public interface IShopProcessor
     {
         Task<bool> AddNewShop(NewShopDTO data);
         Task<bool> ModifyShop(ModifyShopDTO data);

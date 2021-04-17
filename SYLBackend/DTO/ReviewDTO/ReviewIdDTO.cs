@@ -7,5 +7,6 @@ namespace SYLBackend.DTO.ReviewDTO
 {
     public class ReviewIdDTO
     {
+        public string reviewId { get; set; }
     }
 }

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace SYLBackend.Interfaces
 {
-    interface IReviewProcessor
+    public interface IReviewProcessor
     {
         Task<bool> AddNewReview(NewReviewDTO data);
         Task<bool> DeleteReview(ReviewIdDTO data);
-        Task<Reviews> GetAllReviews();
+        Task<Reviews> GetReviews();
         Task<Reviews> GetRatings();
         Task<Reviews> GetReviewsByShop(GetReviewByShopDTO data);
     }

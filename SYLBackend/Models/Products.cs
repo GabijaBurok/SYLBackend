@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace SYLBackend.Models
 {
     public class Products
     {
+        [Key]
         public string productId { get; set; }
         public string shopId { get; set; }
         public string productName { get; set; }

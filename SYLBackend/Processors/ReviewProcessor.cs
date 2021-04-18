@@ -30,6 +30,11 @@ namespace SYLBackend.Processors
             throw new NotImplementedException();
         }
 
+        public Task<Reviews> GetReviews()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Reviews> GetReviewsByShop(GetReviewByShopDTO data)
         {
             throw new NotImplementedException();

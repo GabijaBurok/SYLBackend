@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SYLBackend.Context;
 using SYLBackend.DTO.UserDTO;
 using SYLBackend.Interfaces;
 using SYLBackend.Models;
@@ -10,15 +12,38 @@ namespace SYLBackend.Processors
 {
     public class UserProcessor : IUserProcessor
     {
-        public Task<bool> AddNewUser(NewUserDTO data)
-        {
-            throw new NotImplementedException();
-        }
+        SYLContext context = new SYLContext();
 
-        public Task<bool> DeleteUser(string userId)
+        public Task<bool> AddNewUser(NewUserDTO data) => Task.Run(() =>
         {
-            throw new NotImplementedException();
-        }
+            Users user = new Users
+            {
+                userId = Guid.NewGuid().ToString(),
+                userName = data.userName,
+                userLastName = data.userLastName,
+                userEmail = data.userEmail,
+                userPassword = data.userPassword,
+                userType = data.userType
+            };
+            try
+            {
+                context.Users.Add(user);
+                context.SaveChanges();
+            }
+            catch (DbUpdateException e)
+            {
+                return false;
+            }
+            return true;
+
+        });
+
+        public Task<bool> DeleteUser(string userId) => Task.Run(() =>
+        {
+            context.Remove(context.Users.Find(userId));
+            context.SaveChanges();
+            return true;
+        });
 
         public Task<Users> GetUserByEmail(string userEmail)
         {

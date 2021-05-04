@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using SYLBackend.Context;
+using SYLBackend.Interfaces;
+using SYLBackend.Processors;
 
 namespace SYLBackend
 {
@@ -28,6 +30,7 @@ namespace SYLBackend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IUserProcessor, UserProcessor>();
             services.AddDbContext<SYLContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
         }
 

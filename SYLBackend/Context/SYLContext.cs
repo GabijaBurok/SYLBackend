@@ -9,6 +9,10 @@ namespace SYLBackend.Context
 {
     public class SYLContext : DbContext
     {
+        public SYLContext()
+        {
+        }
+
         public SYLContext(DbContextOptions<SYLContext> options) : base(options)
         {
 

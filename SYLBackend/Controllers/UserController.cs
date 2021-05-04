@@ -22,7 +22,10 @@ namespace SYLBackend.Controllers
         [HttpPost]
         public async Task<IActionResult> AddUser([FromBody] NewUserDTO data)
         {
-            throw new NotImplementedException();
+            if (await Task.Run(() => _userProcessor.AddNewUser(data)))
+                return Ok("User Added");
+            else
+                return BadRequest("This user already exists");
         }
 
         [HttpPut]

@@ -12,7 +12,11 @@ namespace SYLBackend.Processors
 {
     public class UserProcessor : IUserProcessor
     {
-        SYLContext context = new SYLContext();
+        private readonly SYLContext context;
+        public UserProcessor(SYLContext context)
+        {
+            this.context = context;
+        }
 
         public Task<bool> AddNewUser(NewUserDTO data) => Task.Run(() =>
         {

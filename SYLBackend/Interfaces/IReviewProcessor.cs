@@ -12,7 +12,7 @@ namespace SYLBackend.Interfaces
         Task<bool> AddNewReview(NewReviewDTO data);
         Task<bool> DeleteReview(ReviewIdDTO data);
         Task<Reviews> GetReviews();
-        Task<Reviews> GetRatings();
-        Task<Reviews> GetReviewsByShop(GetReviewByShopDTO data);
+        Task<double> GetAvgRating(string shopName);
+        Task<List<GetReviewByShopDTO>> GetReviewsByShop(string shopName);
     }
 }

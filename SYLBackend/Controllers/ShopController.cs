@@ -20,31 +20,31 @@ namespace SYLBackend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddNewShop([FromBody] NewShopDTO data)
+        public Task<IActionResult> AddNewShop([FromBody] NewShopDTO data)
         {
             throw new NotImplementedException();
         }
 
         [HttpPut]
-        public async Task<IActionResult> ModifyShop([FromBody] ModifyShopDTO data)
+        public Task<IActionResult> ModifyShop([FromBody] ModifyShopDTO data)
         {
             throw new NotImplementedException();
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteShop(string productId)
+        public Task<IActionResult> DeleteShop(string productId)
         {
             throw new NotImplementedException();
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllShops()
+        public Task<IActionResult> GetAllShops()
         {
             throw new NotImplementedException();
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetShopsByQuerry(string data)
+        public Task<IActionResult> GetShopsByQuerry(string data)
         {
             throw new NotImplementedException();
         }

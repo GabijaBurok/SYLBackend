@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SYLBackend.Context;
 using SYLBackend.DTO.ShopDTO;
 using SYLBackend.Interfaces;
 using SYLBackend.Models;
@@ -10,6 +11,12 @@ namespace SYLBackend.Processors
 {
     public class ShopProcessor : IShopProcessor
     {
+        private readonly SYLContext context;
+        public ShopProcessor(SYLContext context)
+        {
+            this.context = context;
+        }
+
         public Task<bool> AddNewShop(NewShopDTO data)
         {
             throw new NotImplementedException();
@@ -25,9 +32,9 @@ namespace SYLBackend.Processors
             throw new NotImplementedException();
         }
 
-        public Task<Shops> GetShopsBySeller(GetShopBySellerDTO data)
+        public async Task<Shops> GetShopsBySeller(string shop)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() => context.Shops.First(a => a.shopName == shop));
         }
 
         public Task<bool> ModifyShop(ModifyShopDTO data)

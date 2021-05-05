@@ -8,6 +8,7 @@ namespace SYLBackend.DTO.ReviewDTO
     public class NewReviewDTO
     {
         public string customerId { get; set; }
+        public string customerName { get; set; }
         public string shopId { get; set; }
         public int reviewRating { get; set; }
         public string reviewComment { get; set; }

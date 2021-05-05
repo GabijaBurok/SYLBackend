@@ -34,7 +34,7 @@ namespace SYLBackend.Processors
                 context.Users.Add(user);
                 context.SaveChanges();
             }
-            catch (DbUpdateException e)
+            catch (DbUpdateException)
             {
                 return false;
             }

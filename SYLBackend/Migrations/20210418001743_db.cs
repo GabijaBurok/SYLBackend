@@ -44,6 +44,7 @@ namespace SYLBackend.Migrations
                 {
                     reviewId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     customerId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    customerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     shopId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     reviewRating = table.Column<int>(type: "int", nullable: false),
                     reviewComment = table.Column<string>(type: "nvarchar(max)", nullable: true)

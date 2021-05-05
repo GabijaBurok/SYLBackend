@@ -29,13 +29,13 @@ namespace SYLBackend.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> ModifyUser([FromBody] ModifyUserDTO data)
+        public Task<IActionResult> ModifyUser([FromBody] ModifyUserDTO data)
         {
             throw new NotImplementedException();
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteUser(string userId)
+        public Task<IActionResult> DeleteUser(string userId)
         {
             throw new NotImplementedException();
         }

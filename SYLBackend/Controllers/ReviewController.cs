@@ -1,14 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SYLBackend.DTO.ReviewDTO;
 using SYLBackend.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using SYLBackend.DTO.ReviewDTO;
 
 namespace SYLBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ReviewController
+    public class ReviewController : ControllerBase
     {
         private readonly IReviewProcessor _reviewProcessor;
 
@@ -18,9 +20,13 @@ namespace SYLBackend.Controllers
         }
 
         [HttpPost]
-        public Task<IActionResult> AddNewReview([FromBody] NewReviewDTO data)
+        public async Task<IActionResult> AddNewReview([FromBody] NewReviewDTO data)
         {
-            throw new NotImplementedException();
+            if (await Task.Run(() => _reviewProcessor.AddNewReview(data)))
+                return Ok();
+            else
+                return BadRequest();
+
         }
 
         [HttpDelete]
@@ -36,15 +42,15 @@ namespace SYLBackend.Controllers
         }
 
         [HttpGet]
-        public Task<IActionResult> GetRatings()
+        public async Task<IActionResult> GetRating([FromBody] string shopName)
         {
-            throw new NotImplementedException();
+                return Ok(await Task.Run(() => _reviewProcessor.GetAvgRating(shopName)));
         }
 
         [HttpGet]
-        public Task<IActionResult> GetReviewsByShop([FromBody] GetReviewByShopDTO data)
+        public async Task<IActionResult> GetReviewsByShop([FromBody] string shopName)
         {
-            throw new NotImplementedException();
+            return Ok(await Task.Run(() => _reviewProcessor.GetReviewsByShop(shopName)));
         }
     }
 }

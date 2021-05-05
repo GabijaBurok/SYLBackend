@@ -22,7 +22,10 @@ namespace SYLBackend.Controllers
         [HttpPost]
         public async Task<IActionResult> AddUser([FromBody] NewUserDTO data)
         {
-            throw new NotImplementedException();
+            if (await Task.Run(() => _userProcessor.AddNewUser(data)))
+                return Ok("User Added");
+            else
+                return BadRequest("This user already exists");
         }
 
         [HttpPut]
@@ -40,7 +43,11 @@ namespace SYLBackend.Controllers
         [HttpGet]
         public async Task<IActionResult> UserLogin([FromBody] UserLoginDTO data)
         {
-            throw new NotImplementedException();
+            if (await _userProcessor.VerifyUser(data))
+            {
+                return Ok(Task.Run(() => _userProcessor.GetUserByEmail(data.userEmail)));
+            }
+            else return BadRequest("Failed to log in");
         }
     }
 }

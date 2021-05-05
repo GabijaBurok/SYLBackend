@@ -49,14 +49,14 @@ namespace SYLBackend.Processors
             return true;
         });
 
-        public Task<Users> GetUserByEmail(string userEmail)
+        public async Task<Users> GetUserByEmail(string userEmail)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() => context.Users.First(a => a.userEmail == userEmail));
         }
 
-        public Task<Users> GetUserById(string userId)
+        public async Task<Users> GetUserById(string userId)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() => context.Users.First(a => a.userId == userId));
         }
 
         public Task<bool> ModifyUser(ModifyUserDTO data)
@@ -64,9 +64,15 @@ namespace SYLBackend.Processors
             throw new NotImplementedException();
         }
 
-        public Task<bool> VerifyUser(UserLoginDTO data)
+        public async Task<bool> VerifyUser(UserLoginDTO data)
         {
-            throw new NotImplementedException();
+            Users tempUser = await GetUserByEmail(data.userEmail);
+            if (tempUser == null) return false;
+            else
+            {
+                if (tempUser.userPassword == data.userPassword) return true;
+                else return false;
+            }
         }
     }
 }

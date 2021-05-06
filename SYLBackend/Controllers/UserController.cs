@@ -43,7 +43,11 @@ namespace SYLBackend.Controllers
         [HttpGet]
         public async Task<IActionResult> UserLogin([FromBody] UserLoginDTO data)
         {
-            throw new NotImplementedException();
+            if (await _userProcessor.VerifyUser(data))
+            {
+                return Ok(Task.Run(() => _userProcessor.GetUserByEmail(data.userEmail)));
+            }
+            else return BadRequest("Failed to log in");
         }
     }
 }

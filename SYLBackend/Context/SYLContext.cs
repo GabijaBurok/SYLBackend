@@ -22,6 +22,6 @@ namespace SYLBackend.Context
         public DbSet<Products> Products { get; set; }
         public DbSet<Reviews> Reviews { get; set; }
         public DbSet<Shops> Shops { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public DbSet<Users> Users { get; set; }
     }
 }

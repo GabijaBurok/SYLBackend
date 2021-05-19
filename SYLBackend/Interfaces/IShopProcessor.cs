@@ -13,6 +13,6 @@ namespace SYLBackend.Interfaces
         Task<bool> ModifyShop(ModifyShopDTO data);
         Task<bool> DeleteShop(ShopIdDTO data);
         Task<Shops> GetAllShops();
-        Task<Shops> GetShopsBySeller(GetShopBySellerDTO data);
+        Task<Shops> GetShopsBySeller(string shop);
     }
 }

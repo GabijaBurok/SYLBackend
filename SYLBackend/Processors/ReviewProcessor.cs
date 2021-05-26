@@ -20,25 +20,29 @@ namespace SYLBackend.Processors
         }
         public Task<bool> AddNewReview(NewReviewDTO data) => Task.Run(() =>
         {
-            Reviews review = new Reviews
+            if (UserExists(data.customerId) && ShopExists(data.shopId) && RatingIsValid(data.reviewRating) && ReviewCommentIsValid(data.reviewComment))
             {
-                reviewId = Guid.NewGuid().ToString(),
-                customerId = data.customerId,
-                customerName = data.customerName,
-                shopId = data.shopId,
-                reviewRating = data.reviewRating,
-                reviewComment = data.reviewComment
-            };
-            try
-            {
-                context.Reviews.Add(review);
-                context.SaveChanges();
+                Reviews review = new Reviews
+                {
+                    reviewId = Guid.NewGuid().ToString(),
+                    customerId = data.customerId,
+                    customerName = data.customerName,
+                    shopId = data.shopId,
+                    reviewRating = data.reviewRating,
+                    reviewComment = data.reviewComment
+                };
+                try
+                {
+                    context.Reviews.Add(review);
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    return false;
+                }
+                return true;
             }
-            catch (DbUpdateException)
-            {
-                return false;
-            }
-            return true;
+            else return false;
         });
 
         public Task<bool> DeleteReview(ReviewIdDTO data)
@@ -76,6 +80,38 @@ namespace SYLBackend.Processors
                 reviewlist.Add(new GetReviewByShopDTO { customerName = review.customerName, shopName = shopName, reviewRating = review.reviewRating, reviewComment = review.reviewComment });
             }
             return reviewlist;
+        }
+
+        private bool UserExists(String id)
+        {
+            var users = context.Users.Where(u => u.userId == id).ToList();
+            if (users.Count == 1)
+                return true;
+            else return false;
+        }
+
+        private bool ShopExists(string id)
+        {
+            var shops = context.Shops.Where(s => s.shopId == id).ToList();
+            if (shops.Count == 1)
+                return true;
+            else return false;
+        }
+
+        private bool RatingIsValid(int rating)
+        {
+            if (rating < 0)
+                return false;
+            else if (rating > 5)
+                return false;
+            else return true;
+        }
+
+        private bool ReviewCommentIsValid(string comment)
+        {
+            if (comment.Equals(String.Empty))
+                return false;
+            else return true;
         }
     }
 }

@@ -12,5 +12,6 @@ namespace SYLBackend.DTO.ReviewDTO
         public string shopId { get; set; }
         public int reviewRating { get; set; }
         public string reviewComment { get; set; }
+        
     }
 }

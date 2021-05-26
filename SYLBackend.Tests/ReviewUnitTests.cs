@@ -24,12 +24,6 @@ namespace SYLBackend.Tests
 
             Seed(context);
         }
-        /*
-        public void Dispose()
-        {
-            //context.Database.EnsureDeleted();
-            context.Dispose();
-        }*/
 
         private void Seed(SYLContext context)
         {
@@ -199,7 +193,7 @@ namespace SYLBackend.Tests
 
             Assert.False(result);
         }
-
+/*
         [Fact]
         public void GetReviewsByShop_ValidShopName_Succeeds()
         {
@@ -208,7 +202,7 @@ namespace SYLBackend.Tests
             var result = processor.GetReviewsByShop("TestShop-2").Result;
 
             Assert.Equal(2, result.Count);
-        }
+        }*/
         #endregion
     }
 }

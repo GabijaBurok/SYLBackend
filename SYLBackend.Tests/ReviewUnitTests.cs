@@ -8,7 +8,7 @@ using Xunit;
 
 namespace SYLBackend.Tests
 {
-    public class ReviewUnitTests //: IDisposable
+    public class ReviewUnitTests
     {
         #region SetUp
         private readonly SYLContext context;
@@ -20,7 +20,6 @@ namespace SYLBackend.Tests
                 .Options;
 
              context = new SYLContext(options);
-            //context.Database.EnsureCreated();
 
             Seed(context);
         }
@@ -193,7 +192,7 @@ namespace SYLBackend.Tests
 
             Assert.False(result);
         }
-/*
+        
         [Fact]
         public void GetReviewsByShop_ValidShopName_Succeeds()
         {
@@ -202,7 +201,7 @@ namespace SYLBackend.Tests
             var result = processor.GetReviewsByShop("TestShop-2").Result;
 
             Assert.Equal(2, result.Count);
-        }*/
+        }
         #endregion
     }
 }
